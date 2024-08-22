@@ -21,9 +21,10 @@ elokuvat.sort((a, b) => b.rating - a.rating);
 
 console.log(elokuvat);
 
-for (let elokuva of elokuvat) {
+for (const elokuva of elokuvat) {
   const html = `<tr>
                   <td>${elokuva.title}</td>
                   <td>${elokuva.rating}</td>
                 </tr>`;
+  kohde.insertAdjacentHTML('beforeend', html);
 }
