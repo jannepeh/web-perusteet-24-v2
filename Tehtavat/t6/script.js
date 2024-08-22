@@ -16,3 +16,9 @@ for (let i = 0; i < lkm; i++) {
 
   elokuvat.push(elokuva);
 }
+
+elokuvat.sort((a, b) => b.rating - a.rating);
+
+console.log(elokuvat);
+
+for (let elokuva of elokuvat);
