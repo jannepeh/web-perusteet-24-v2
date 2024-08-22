@@ -15,3 +15,4 @@ if (sivu1 === sivu2 && sivu2 === sivu3) {
 } else {
   kohde.innerHTML = 'Kolmio on tasakylkinen';
 }
++¨-
