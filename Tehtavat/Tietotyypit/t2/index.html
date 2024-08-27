@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D Distance Calculator</title>
+    <script src="script.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 50px;
+      }
+
+      .result {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>2D Distance Calculator</h1>
+    <label for="point1Input">Enter coordinates for Point 1 (x1, y1):</label>
+    <input type="text" id="point1Input" placeholder="e.g. 3,4" />
+    <br /><br />
+    <label for="point2Input">Enter coordinates for Point 2 (x2, y2):</label>
+    <input type="text" id="point2Input" placeholder="e.g. 6,8" />
+    <br /><br />
+    <button onclick="calculateDistance()">Calculate Distance</button>
+
+    <div class="result" id="result"></div>
+  </body>
+</html>
