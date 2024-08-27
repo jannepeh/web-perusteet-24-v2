@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luonnonlukujen summa -laskin</title>
+    <script src="script.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 50px;
+      }
+      .result {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Luonnonlukujen summa -laskin</h1>
+    <label for="numberInput">Syötä positiivinen kokonaisluku:</label>
+    <input type="number" id="numberInput" min="1" placeholder="esim. 5" />
+    <br /><br />
+    <button onclick="calculateSum()">Laske Summa</button>
+
+    <div class="result" id="result"></div>
+  </body>
+</html>
