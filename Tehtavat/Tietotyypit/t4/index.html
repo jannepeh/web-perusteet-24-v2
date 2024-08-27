@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arviointi laskuri</title>
+    <script src="script.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 50px;
+      }
+      .result {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Grade Calculator</h1>
+    <label for="scoreInput">Laita pisteesi (0-100):</label>
+    <input
+      type="number"
+      id="scoreInput"
+      min="0"
+      max="100"
+      placeholder="esim 85"
+    />
+    <br /><br />
+    <button onclick="determineGrade()">Laske arvo</button>
+
+    <div class="result" id="result"></div>
+  </body>
+</html>
