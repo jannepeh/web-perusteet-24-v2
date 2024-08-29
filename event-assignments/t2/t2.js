@@ -784,6 +784,9 @@ for (const restaurant of restaurants) {
     const osoite = document.createElement('td');
     osoite.innerText = restaurant.address;
 
-    kohde.append(nimi, osoite);
+    const rivi = document.createElement('tr');
+
+    rivi.append(nimi, osoite);
+    kohde.append(rivi);
   }
 }
