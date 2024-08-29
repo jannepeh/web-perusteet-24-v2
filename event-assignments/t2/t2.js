@@ -776,6 +776,8 @@ const restaurants = [
 const kohde = document.querySelector('tbody');
 const modaali = document.querySelector('dialog');
 
+restaurants.sort((a, b) => a.name.localeCompare(b.name));
+
 for (const restaurant of restaurants) {
   if (restaurant) {
     const nimi = document.createElement('td');
@@ -785,6 +787,7 @@ for (const restaurant of restaurants) {
     osoite.innerText = restaurant.address;
 
     const rivi = document.createElement('tr');
+    rivi.classList.add('highlight');
 
     rivi.append(nimi, osoite);
     kohde.append(rivi);
