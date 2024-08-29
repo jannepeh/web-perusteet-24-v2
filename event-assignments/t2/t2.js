@@ -776,6 +776,14 @@ const restaurants = [
 const kohde = document.querySelector('tbody');
 const modaali = document.querySelector('dialog');
 
-for (const restaurants in restaurants) {
-  const nimi = document.createElement('td');
+for (const restaurant of restaurants) {
+  if (restaurant) {
+    const nimi = document.createElement('td');
+    nimi.innerText = restaurant.name;
+
+    const osoite = document.createElement('td');
+    osoite.innerText = restaurant.address;
+
+    kohde.append(nimi, osoite);
+  }
 }
