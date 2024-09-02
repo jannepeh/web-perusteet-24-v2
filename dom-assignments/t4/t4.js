@@ -770,4 +770,58 @@ const restaurants = [
   },
 ];
 
-// your code here
+function getCurrentLocation() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
+function calculateDistance(coord1, coord2) {
+  const [lat1, lon1] = coord1;
+  const [lat2, lon2] = coord2;
+  return Math.sqrt(Math.pow(lat1 - lat2, 2) + Math.pow(lon1 - lon2, 2));
+}
+
+function sortRestaurantsByDistance(userLocation) {
+  return restaurants
+    .map(restaurant => {
+      const distance = calculateDistance(
+        [userLocation.latitude, userLocation.longitude],
+        restaurant.location.coordinates
+      );
+      return {...restaurant, distance};
+    })
+    .sort((a, b) => a.distance - b.distance);
+}
+
+function displayRestaurants(sortedRestaurants) {
+  const table = document.querySelector('table');
+  sortedRestaurants.forEach(restaurant => {
+    const row = document.createElement('tr');
+    const nameCell = document.createElement('td');
+    const addressCell = document.createElement('td');
+
+    nameCell.textContent = restaurant.name;
+    addressCell.textContent = restaurant.address;
+
+    row.appendChild(nameCell);
+    row.appendChild(addressCell);
+    table.appendChild(row);
+  });
+}
+
+async function main() {
+  try {
+    const position = await getCurrentLocation();
+    const userLocation = {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    };
+    const sortedRestaurants = sortRestaurantsByDistance(userLocation);
+    displayRestaurants(sortedRestaurants);
+  } catch (error) {
+    console.error('Error getting location:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', main);
