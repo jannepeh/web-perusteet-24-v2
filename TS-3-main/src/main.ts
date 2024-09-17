@@ -1,5 +1,6 @@
 import {errorModal, restaurantModal, restaurantRow} from './components';
 import {fetchData} from './functions';
+import {DailyMenu} from './types/Menu';
 import {Restaurant} from './types/Restaurant';
 import {apiUrl, positionOptions} from './variables';
 
@@ -37,7 +38,7 @@ const createTable = (restaurants: Restaurant[]) => {
         modal.innerHTML = '';
 
         // fetch menu
-        const menu = await fetchData(
+        const menu = await fetchData<DailyMenu>(
           apiUrl + `/restaurants/daily/${restaurant._id}/fi`
         );
         console.log(menu);

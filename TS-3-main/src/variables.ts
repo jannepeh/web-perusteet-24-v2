@@ -1,4 +1,4 @@
-const apiUrl = 'https://media1.edu.metropolia.fi/restaurant';
+const apiUrl = 'https://media1.edu.metropolia.fi/restaurant/api/v1';
 
 const positionOptions = {
   enableHighAccuracy: true,
