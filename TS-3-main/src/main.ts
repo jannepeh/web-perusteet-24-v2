@@ -61,7 +61,7 @@ const error = (err: GeolocationPositionError) => {
 const success = async (pos: GeolocationPosition) => {
   try {
     const crd = pos.coords;
-    const restaurants = await fetchData(apiUrl + '/restaurants');
+    const restaurants = await fetchData<Restaurant[]>(apiUrl + '/restaurants');
     console.log(restaurants);
     restaurants.sort((a: Restaurant, b: Restaurant) => {
       const x1 = crd.latitude;
@@ -80,13 +80,23 @@ const success = async (pos: GeolocationPosition) => {
     const compassBtn = document.querySelector('#compass');
     const resetBtn = document.querySelector('#reset');
 
+    if (!sodexoBtn) {
+      console.log('Sodexo button missing in HTML');
+      return;
+    }
+
     sodexoBtn.addEventListener('click', () => {
       const sodexoRestaurants = restaurants.filter(
-        (restaurant) => restaurant.company === 'Sodexo'
+        (restaurant: Restaurant) => restaurant.company === 'Sodexo'
       );
       console.log(sodexoRestaurants);
       createTable(sodexoRestaurants);
     });
+
+    if (!compassBtn) {
+      console.log('Compass button missing in HTML');
+      return;
+    }
 
     compassBtn.addEventListener('click', () => {
       const compassRestaurants = restaurants.filter(
@@ -95,6 +105,11 @@ const success = async (pos: GeolocationPosition) => {
       console.log(compassRestaurants);
       createTable(compassRestaurants);
     });
+
+    if (!resetBtn) {
+      console.log('Reset button is missing in HTML');
+      return;
+    }
 
     resetBtn.addEventListener('click', () => {
       createTable(restaurants);
