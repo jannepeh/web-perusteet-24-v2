@@ -35,7 +35,7 @@ const restaurantModal = (restaurant: Restaurant, menu: DailyMenu) => {
           <tr>
             <td>${name}</td>
             <td>${diets ?? ' - '}</td>
-            <td>${price ?? ' - '}</td>
+            <td>${price ?? ' - '}€</td>
           </tr>
           `;
   });

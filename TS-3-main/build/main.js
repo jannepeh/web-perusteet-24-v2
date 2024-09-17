@@ -33,7 +33,7 @@ const restaurantModal = (restaurant, menu) => {
           <tr>
             <td>${name}</td>
             <td>${diets ?? ' - '}</td>
-            <td>${price ?? ' - '}</td>
+            <td>${price ?? ' - '}€</td>
           </tr>
           `;
     });
