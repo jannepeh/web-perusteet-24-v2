@@ -1,4 +1,6 @@
-type restaurant = {
+import {Point} from './Point';
+
+type Restaurant = {
   _id: string;
   companyId: Number;
   name: string;
@@ -10,7 +12,4 @@ type restaurant = {
   company: string;
 };
 
-type Point = {
-  type: string;
-  coordinates: number[];
-};
+export {Restaurant};
