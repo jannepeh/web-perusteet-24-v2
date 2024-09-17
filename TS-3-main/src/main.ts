@@ -10,7 +10,7 @@ modal.addEventListener('click', () => {
   modal.close();
 });
 
-const calculateDistance = (x1, y1, x2, y2) =>
+const calculateDistance = (x1: number, y1: number, x2: number, y2: number) =>
   Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 
 const createTable = (restaurants) => {
