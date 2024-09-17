@@ -16,6 +16,10 @@ const calculateDistance = (x1: number, y1: number, x2: number, y2: number) =>
 
 const createTable = (restaurants: Restaurant[]) => {
   const table = document.querySelector('table');
+  if (!table) {
+    console.log('table is missing in HTML');
+    return;
+  }
   table.innerHTML = '';
   restaurants.forEach((restaurant) => {
     const tr = restaurantRow(restaurant);
@@ -50,16 +54,16 @@ const createTable = (restaurants: Restaurant[]) => {
   });
 };
 
-const error = (err) => {
+const error = (err: GeolocationPositionError) => {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 };
 
-const success = async (pos) => {
+const success = async (pos: GeolocationPosition) => {
   try {
     const crd = pos.coords;
     const restaurants = await fetchData(apiUrl + '/restaurants');
     console.log(restaurants);
-    restaurants.sort((a, b) => {
+    restaurants.sort((a: Restaurant, b: Restaurant) => {
       const x1 = crd.latitude;
       const y1 = crd.longitude;
       const x2a = a.location.coordinates[1];
