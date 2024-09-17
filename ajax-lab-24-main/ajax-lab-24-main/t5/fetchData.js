@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-async function fetchData(url, options = {}) {
-  const response = await fetch(url, options);
+async function fetchData(url, options) {
+  const response = await fetch(url, options); // failed to fetch -> address wrong
   if (!response.ok) {
     throw new Error('HTTP error: ' + response.status);
   }

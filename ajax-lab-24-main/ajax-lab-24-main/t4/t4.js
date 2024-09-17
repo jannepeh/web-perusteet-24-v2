@@ -1,10 +1,10 @@
 async function haeDataa() {
   try {
     const user = {
-      name: 'John Doe',
-      job: 'Developer',
+      name: 'Jony',
+      job: 'Bash',
     };
-    const url = 'https://reqres.in/ap/users';
+    const url = 'https://reqres.in/api/users';
     const options = {
       method: 'POST',
       headers: {

@@ -26,13 +26,13 @@ td {
 }
 
 .highlight {
-  background-color: #fff;
+  background-color: white;
   font-weight: bold;
 }
 
 dialog > div:first-child {
   position: absolute;
-  right: 0.1rem;
+  right: 0.5rem;
   top: 0;
 }
 

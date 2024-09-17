@@ -1,5 +1,6 @@
 import {errorModal, restaurantModal, restaurantRow} from './components';
 import {fetchData} from './functions';
+import {Restaurant} from './types/Restaurant';
 import {apiUrl, positionOptions} from './variables';
 
 const modal = document.querySelector('dialog');
@@ -13,7 +14,7 @@ modal.addEventListener('click', () => {
 const calculateDistance = (x1: number, y1: number, x2: number, y2: number) =>
   Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 
-const createTable = (restaurants) => {
+const createTable = (restaurants: Restaurant[]) => {
   const table = document.querySelector('table');
   table.innerHTML = '';
   restaurants.forEach((restaurant) => {
