@@ -122,6 +122,19 @@ const checkToken = async (): Promise<void> => {
   addUserDataToDom(user);
 };
 
+//logout
+
+const logoutButton = document.querySelector('#logout');
+logoutButton?.addEventListener('click', () => {
+  localStorage.removeItem('token');
+  if (!emailTarget || !usernameTarget || !avatarTarget) {
+    return;
+  }
+  emailTarget.innerText = '';
+  usernameTarget.innerText = '';
+  avatarTarget.src = '';
+});
+
 // call checkToken on page load to check if token exists and update the DOM
 checkToken();
 
