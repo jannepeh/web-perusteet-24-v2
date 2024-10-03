@@ -197,6 +197,10 @@ if (avatarForm) {
     evt.preventDefault();
     const fd = new FormData(avatarForm);
     const token = localStorage.getItem('token');
+    if (!token) {
+      alert('pliis login');
+      return;
+    }
     const options: RequestInit = {
       method: 'POST',
       headers: {
