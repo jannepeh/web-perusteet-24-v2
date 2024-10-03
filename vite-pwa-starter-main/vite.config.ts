@@ -12,6 +12,7 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,ttf}'],
       },
+      includeAssets: ['app-icon.svg', 'main.css', 'Pacifico-Regular.ttf'],
       manifest: {
         name: 'Vite-PWA-example',
         short_name: 'VitePWA',

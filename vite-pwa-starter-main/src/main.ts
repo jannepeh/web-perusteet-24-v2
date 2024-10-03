@@ -32,10 +32,6 @@ const profileEmailInput = document.querySelector(
   '#profile-email'
 ) as HTMLInputElement | null;
 
-const avatarInput = document.querySelector(
-  '#avatar'
-) as HTMLInputElement | null;
-
 // select profile elements from the DOM
 const usernameTarget = document.querySelector(
   '#username-target'
@@ -106,7 +102,7 @@ const addUserDataToDom = (user: User): void => {
 };
 
 // function to get userdata from API using token
-const getUserData = async (token: string): Promise<User> => {};
+// const getUserData = async (token: string): Promise<User> => {};
 
 // TODO: function to check local storage for token and if it exists fetch
 // userdata with getUserData then update the DOM with addUserDataToDom
