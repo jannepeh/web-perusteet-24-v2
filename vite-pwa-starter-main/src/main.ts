@@ -77,7 +77,7 @@ const updateUserData = async (
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     },
     body: JSON.stringify(user),
   };
@@ -102,11 +102,25 @@ const addUserDataToDom = (user: User): void => {
 };
 
 // function to get userdata from API using token
-// const getUserData = async (token: string): Promise<User> => {};
-
-// TODO: function to check local storage for token and if it exists fetch
+const getUserData = async (token: string): Promise<User> => {
+  const options: RequestInit = {
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  };
+  return await fetchData<User>(apiUrl + '/users/token', options);
+};
+// function to check local storage for token and if it exists fetch
 // userdata with getUserData then update the DOM with addUserDataToDom
-const checkToken = async (): Promise<void> => {};
+const checkToken = async (): Promise<void> => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.log('nou token');
+    return;
+  }
+  const user = await getUserData(token);
+  addUserDataToDom(user);
+};
 
 // call checkToken on page load to check if token exists and update the DOM
 checkToken();
@@ -128,7 +142,7 @@ if (loginForm) {
   });
 }
 
-// TODO: profile form event listener
+//  profile form event listener
 // event listener should call updateUserData function and update the DOM with
 // the user data by calling addUserDataToDom or checkToken
 if (profileForm) {
