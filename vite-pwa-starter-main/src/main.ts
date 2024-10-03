@@ -72,11 +72,26 @@ const login = async (): Promise<LoginUser> => {
   return result;
 };
 
-// TODO: function to update user data
+//  function to update user data
 const updateUserData = async (
   user: UpdateUser,
   token: string
-): Promise<UpdateResult> => {};
+): Promise<UpdateResult> => {
+  const options: RequestInit = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer' + token,
+    },
+    body: JSON.stringify(user),
+  };
+  const UpdateResult = await fetchData<UpdateResult>(
+    apiUrl + '/users',
+    options
+  );
+
+  return UpdateResult;
+};
 
 // function to add userdata (email, username and avatar image) to the
 // Profile DOM and Edit Profile Form
@@ -120,6 +135,36 @@ if (loginForm) {
 // TODO: profile form event listener
 // event listener should call updateUserData function and update the DOM with
 // the user data by calling addUserDataToDom or checkToken
+if (profileForm) {
+  profileForm.addEventListener('submit,', async (evt) => {
+    try {
+      evt.preventDefault();
+
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('pliis login');
+        return;
+      }
+
+      if (!profileUsernameInput || !profileEmailInput) {
+        throw new Error('Näitäkään elementtei ei ole');
+      }
+      const username = profileUsernameInput.value;
+      const email = profileEmailInput.value;
+
+      const data = {
+        username,
+        email,
+      };
+
+      const userResponse = await updateUserData(data, token);
+      addUserDataToDom(userResponse.data);
+      alert('update OK');
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  });
+}
 
 // avatar form event listener
 // event listener should call uploadAvatar function and update the DOM with
